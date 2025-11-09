@@ -9,8 +9,8 @@ import java.util.ArrayList;
 public class Order {
 
     private String orderID;
-    private ArrayList <Pizza> pizzas;
-    private ArrayList <Drink> drinks;
+    private ArrayList<Pizza> pizzas;
+    private ArrayList<Drink> drinks;
     private GarlicKnots garlicKnots;
     private LocalDateTime dateTime;
 
@@ -18,8 +18,16 @@ public class Order {
         this.orderID = orderID;
         this.pizzas = new ArrayList<>();
         this.drinks = new ArrayList<>();
-        this.garlicKnots = garlicKnots;
+        this.garlicKnots = null;
         this.dateTime = LocalDateTime.now();
+    }
+
+    public ArrayList<Pizza> getPizzas() {
+        return pizzas;
+    }
+
+    public ArrayList<Drink> getDrinks() {
+        return drinks;
     }
 
     public String getOrderID() {
@@ -46,10 +54,40 @@ public class Order {
         this.dateTime = dateTime;
     }
 
-    // Adding items
+    // Adding each item in the list
 
-    public void addPizza(Pizza p){
-        pizzas.add(p);
+    public void addPizza(Pizza piz) {
+        pizzas.add(piz);
     }
 
+    public void addDrinks(Drink dk) {
+        drinks.add(dk);
+    }
+
+    public void addGarlicNots(GarlicKnots gK) {
+        this.garlicKnots = garlicKnots;
+    }
+    // Cal.. total amount of order
+
+    public double getTotal() {
+        double total = 0;
+
+        // list pizza price
+
+        for (Pizza piz : pizzas) {
+            total += piz.getPrice();
+        }
+
+        for (Drink dk: drinks) {
+            total += dk.getPrice();
+        }
+
+        if (garlicKnots != null){
+            total += garlicKnots.getPrice();
+        }
+        return total; // just for understanding
+    }
 }
+
+
+
