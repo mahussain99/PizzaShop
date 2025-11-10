@@ -1,9 +1,11 @@
-package com.pluralsight.com.shop.products;
+package com.pluralsight.com.shop.allTopping;
+
+import com.pluralsight.com.shop.products.Pizza;
 
 public abstract class Topping {
     private String name;
 
-    public Topping(String name, String s) {
+    public Topping(String name) {
         this.name = name;
     }
 
@@ -15,13 +17,9 @@ public abstract class Topping {
         this.name = name;
     }
 
-    public void addExtra(Topping Tp) {
+    public void addExtra(Topping topping) {
 
     }
 
-    public double getCost() {
-
-
-        return 0;
-    }
+    public abstract double getPrice(Pizza.PizzaSize size);
 }
