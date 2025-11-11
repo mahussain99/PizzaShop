@@ -1,10 +1,8 @@
-package com.pluralsight.com.shop.allTopping;
+package com.pluralsight.shop.toppings.premiumTopping;
 
-import com.pluralsight.com.shop.products.Pizza;
+import com.pluralsight.shop.products.Pizza;
 
 public class Meats extends PremiumTopping {
-    private String name;
-
     public Meats(String name, boolean hasExtra) {
         super(name, hasExtra);
 
@@ -12,26 +10,28 @@ public class Meats extends PremiumTopping {
 
     // Setting regular price base on needed
     @Override
-    public double getPrice(Pizza.PizzaSize size) {
+    public double getPrice(String pizzaSize ) {
         double basePrice = 0;
 
-        if (size == Pizza.PizzaSize.PERSONAL) {
+        if (pizzaSize.equalsIgnoreCase("PERSONAL")) {
             basePrice = 1.00;
-        } else if (size == Pizza.PizzaSize.MEDIUM) {
+        } else if (pizzaSize.equalsIgnoreCase("MEDIUM")) {
             basePrice = 2.00;
 
-        } else if (size == Pizza.PizzaSize.LARGE) {
+        } else if (pizzaSize.equalsIgnoreCase("LARGE")) {
             basePrice = 3.00;
 
         }
         // set a extra meat price
         if (hasExtra()) {
-            if (size == Pizza.PizzaSize.PERSONAL) {
+            if (pizzaSize.equalsIgnoreCase("PERSONAL")) {
                 basePrice += 0.50;
-            } else if (size == Pizza.PizzaSize.MEDIUM) {
+            } else if (pizzaSize.equalsIgnoreCase("MEDIUM")) {
                 basePrice += 1.00;
-            } else if (size == Pizza.PizzaSize.LARGE) {
+            } else if (pizzaSize.equalsIgnoreCase("LARGE")) {
                 basePrice += 1.50;
+            } else {
+                basePrice = 0;
             }
 
         }
