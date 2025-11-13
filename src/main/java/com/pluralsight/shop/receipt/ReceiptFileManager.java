@@ -1,12 +1,12 @@
 package com.pluralsight.shop.receipt;
 
 import com.pluralsight.shop.order.Order;
-
 import com.pluralsight.shop.products.Pizza;
 import com.pluralsight.shop.products.Drink;
 import com.pluralsight.shop.products.GarlicKnots;
 import com.pluralsight.shop.toppings.Topping;
 
+import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.time.format.DateTimeFormatter;
@@ -15,8 +15,9 @@ public class ReceiptFileManager {
 
         public void saveReceipt(Order order) {
             String fileName = "receipt-" + order.getOrderID() + ".txt";
+            File file = new File("receipt", fileName);
 
-            try (FileWriter writer = new FileWriter(fileName)) {
+            try (FileWriter writer = new FileWriter(file)) {
                 writer.write("--- Receipt ---\n");
                 writer.write("Order ID: " + order.getOrderID() + "\n");
                 writer.write("Date: " + order.getDateTime().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm")) + "\n\n");

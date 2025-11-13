@@ -1,9 +1,7 @@
 package com.pluralsight.shop.toppings.premiumTopping;
 
-import com.pluralsight.shop.products.Pizza;
-
-public class Meats extends PremiumTopping {
-    public Meats(String name, boolean hasExtra) {
+public class Meat extends PremiumTopping {
+    public Meat(String name, boolean hasExtra) {
         super(name, hasExtra);
 
     }

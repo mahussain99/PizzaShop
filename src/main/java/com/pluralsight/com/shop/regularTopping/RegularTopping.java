@@ -1,4 +1,0 @@
-package com.pluralsight.com.shop.regularTopping;
-
-public class RegularTopping {
-}

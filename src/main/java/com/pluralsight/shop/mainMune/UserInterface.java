@@ -1,9 +1,10 @@
 package com.pluralsight.shop.mainMune;
 
-import com.pluralsight.shop.products.Drink;
 import com.pluralsight.shop.order.Order;
+import com.pluralsight.shop.products.Drink;
 import com.pluralsight.shop.products.GarlicKnots;
 import com.pluralsight.shop.products.Pizza;
+import com.pluralsight.shop.receipt.ReceiptFileManager;
 import com.pluralsight.shop.toppings.Topping;
 import com.pluralsight.shop.toppings.premiumTopping.Cheese;
 import com.pluralsight.shop.toppings.premiumTopping.Meat;
@@ -11,7 +12,6 @@ import com.pluralsight.shop.toppings.regularTopping.RegularTopping;
 import com.pluralsight.shop.toppings.regularTopping.Sauce;
 import com.pluralsight.shop.toppings.regularTopping.Side;
 
-import java.sql.SQLOutput;
 import java.time.LocalDateTime;
 import java.util.Arrays;
 import java.util.List;
@@ -25,8 +25,8 @@ public class UserInterface {
         boolean running = false;
         while (!running) {
 
-            System.out.println("\n==== Welcome to Pizza Shop ====");
-            System.out.println(" ");
+            System.out.println(     "\n==== Welcome to Pizza Shop ====");
+            System.out.println("--------------------------------------------");
             System.out.println("1) New Order");
             System.out.println("0) Exit");
             System.out.print("Enter your choice: ");
@@ -50,7 +50,8 @@ public class UserInterface {
         currentOrder = new Order(LocalDateTime.now());
         boolean order = true;
         while (order) {
-            System.out.println("\n--- Order Screen ---");
+            System.out.println("\n===== Order Screen =====");
+            System.out.println("---------------------------");
             System.out.println(" ");
             System.out.println("1) Add Pizza");
             System.out.println("2) Add Drink");
@@ -86,22 +87,18 @@ public class UserInterface {
         }
     }
 
-
     public void createPizza() {
-        System.out.println("\n---- Order Your Pizza ----");
+        System.out.println("\n=======Order Your Pizza=========");
         System.out.println(" ");
+        System.out.print("Choose pizza size (Personal, Medium, Large): ");
 
-        // 1. Choose a Pizza size
-        System.out.print("Choose size (Personal, Medium, Large): ");// fix lower case
         String pizzaSize = scanner.nextLine().trim();
         if (pizzaSize.equalsIgnoreCase("personal") || pizzaSize.equalsIgnoreCase("Medium") || pizzaSize.equalsIgnoreCase("Large")) {
-            System.out.println("You chose pizza is: "+ pizzaSize);
+            System.out.println("You chose pizza is: " + pizzaSize);
         } else {
             System.out.println("Invalid choose option. Default Pizza small");
             pizzaSize = "small";
         }
-
-// 2. Get crust type
         System.out.print("Enter crust type: (Thin, Regular, Thick, or Cauliflower): ");
         String crustType = scanner.nextLine();
         if (crustType.equalsIgnoreCase("Thin") || crustType.equalsIgnoreCase("Regular") || crustType.equalsIgnoreCase("Thick") || crustType.equalsIgnoreCase("Cauliflower")) {
@@ -112,25 +109,18 @@ public class UserInterface {
             System.out.println("Invalid crust. Defaulting to Regular.");
             crustType = "Regular";
         }
-        // 3. Do you want Stuffed crust?
         System.out.print("Stuffed crust? (yes/no): ");
         boolean stuffed = scanner.nextLine().equalsIgnoreCase("yes");
         if (stuffed) {
-            //put if statement. if true print added stuffed crust else print default no stuffed crust
             System.out.println("Yes, Pizza stuffed cruse");
         } else {
-
             System.out.println("No, Pizza not Stuffed crust");
-
         }
-        // 4. Create pizza
         Pizza pizza = new Pizza(pizzaSize, crustType, true);
 
         System.out.println(" ");
-        // Asked for regular topping
-        System.out.println("Adding Regular toppings on the Pizza");
-        System.out.println(" ");
-        //String list = ("Available toppings : onions, mushrooms, bell peppers, olives, tomatoes, spinach, basil, pineapple, anchovies");
+        System.out.println("A Regular toppings on the Pizza");
+        System.out.println("------------------------------------ ");
         List<String> toppings = Arrays.asList("Available Toppings: ", "onion", "bell peppers", "mushrooms", "olives", "tomatoes", "spinach", "basil", "pineapple", "anchovies");
         boolean run = true;
         while (run) {
@@ -146,16 +136,16 @@ public class UserInterface {
                 System.out.println("Toppings added successfully ");
             }
 
-            System.out.print("Would you like to add another topping? (yes/no): " );
+            System.out.print("Would you like to add another topping? (yes/no): ");
             String answer = scanner.nextLine().trim();
             if (!answer.equalsIgnoreCase("yes")) {
                 run = false;
             }
         }
-        System.out.println(" ");
+        System.out.println("--------------------------------------------------------");
         // Asked for sauce
         System.out.print("Adding sauce on the Pizza");
-        System.out.println(" ");
+        System.out.println("\n------------------------- ");
         // System.out.println("Available Sauces: marinara, alfredo, pesto, bbq, buffalo and olive oil");
         List<String> sauces = Arrays.asList("Available Sauces below list: ", "Marinara", "Alfredo", "Pesto", "BBQ", "Buffalo", "Olive oil");
         boolean running = true;
@@ -166,27 +156,23 @@ public class UserInterface {
             if (!sauces.stream().anyMatch(c -> c.equalsIgnoreCase(sauceName))) {
                 System.out.println("Sorry, Sauce not in the list ");
                 continue;
-
             } else {
-
                 Sauce regularSauces = new Sauce(sauceName);
                 pizza.addTopping(regularSauces);
                 System.out.println("All Sauces added successfully");
             }
 
-            System.out.print("Would you like to add more sauces? (yes/no):");
+            System.out.print("Would you like to add more sauces? (yes/no): ");
             String answer = scanner.nextLine().trim();
             if (!answer.equalsIgnoreCase("yes")) {
                 running = false;
             }
         }
-        System.out.println(" ");
-        // asked for side options
+        System.out.println("----------------------------------------------- ");
         System.out.print("Adding Side option--> ");
         List<String> side = Arrays.asList("Side available: ", "Red pepper", "Parmesan");
         boolean sided = true;
         while (sided) {
-
             side.forEach(System.out::println);
             System.out.print("Enter Side option: ");
             String sideName = scanner.nextLine().trim();
@@ -202,13 +188,12 @@ public class UserInterface {
             }
             System.out.print("Would you like more (yes/no) ");
             String yesOrNo = scanner.nextLine().trim();
-            if (!yesOrNo.equalsIgnoreCase("yes"))
-                sided = false;
+            if (!yesOrNo.equalsIgnoreCase("yes")) sided = false;
         }
-
 
         boolean premiumToppings = true;
         while (premiumToppings) {
+            System.out.println("----------------------------------------------------------");
             System.out.println("What kind premium topping do you like (meats/cheese)");
             System.out.println(" ");
             System.out.println("1) Meats");
@@ -218,15 +203,14 @@ public class UserInterface {
             String chose = scanner.nextLine();
 
             switch (chose) {
-                case "1": // meats
-
+                case "1":
                     List<String> meats = Arrays.asList("pepperoni", "sausage", "ham", "bacon", "chicken", "meatball");
                     boolean meatsOption = true;
                     while (meatsOption) {
                         meats.forEach(System.out::println);
+                        System.out.println("----------------------");
                         System.out.print("Enter Meats name: ");
                         String meatsName = scanner.nextLine().trim();
-
                         if (!meats.stream().anyMatch(c -> c.equalsIgnoreCase(meatsName))) {
                             System.out.println("This meats not in the list");
                             continue;
@@ -242,13 +226,12 @@ public class UserInterface {
                         }
                     }
                     break;
-
                 case "2":
-
                     List<String> cheese = Arrays.asList("Mozzarella", "Parmesan", "Ricotta", "Goat Cheese", "Buffalo");
                     boolean cheeseOption = true;
                     while (cheeseOption) {
                         cheese.forEach(System.out::println);
+                        System.out.println("-------------------------");
                         System.out.print("Enter cheese name: ");
                         String cheeseName = scanner.nextLine().trim();
 
@@ -275,39 +258,31 @@ public class UserInterface {
             }
 
         }
-            // 6. Add to order
-            currentOrder.addPizza(pizza);
-            System.out.println("Successfully adding Pizza to your order!");
 
-        }
-
+        currentOrder.addPizza(pizza);
+        System.out.println("Successfully adding Pizza to your order!");
+    }
 
     public void createDrink() {
-        System.out.println("\n--- Adding drink to Order ---");
-
+        System.out.println("\n---------- Adding drink to Order -----------");
         System.out.print("Choose drink size: (SMALL, MEDIUM, LARGE): ");
+        System.out.println("\n-------------------------------------------");
         String drinkSize = scanner.nextLine().trim();
-
         if (drinkSize.equalsIgnoreCase("small") || drinkSize.equalsIgnoreCase("medium") || drinkSize.equalsIgnoreCase("large")) {
             System.out.println("Drink size is: " + drinkSize);
-
         } else {
             System.out.println("Invalid option default to SMALL");
             drinkSize = "SMALL";
         }
 
-        // # 2 choose flavor
-
-        //convert to list and continue to loop until they put a correct option
         System.out.print("What kind of flavor do you like? (Sprite, Coke, Water, Brisk, Orange): ");
+        System.out.println("\n------------------------------------------------------------------------");
         String flavor = scanner.nextLine().trim();
         if (flavor.equalsIgnoreCase("(Sprite, Coke, Water, Brisk, Orange): "))
             System.out.println("Flavor chose " + flavor);
 
-        // # 3 create a drinks
         Drink drink = new Drink(drinkSize, flavor);
 
-        // adding drink in my order
         currentOrder.addDrinks(drink);
         System.out.println("Successfully adding drink to your order");
     }
@@ -331,12 +306,11 @@ public class UserInterface {
     }
 
     public void checkout() {
-
         System.out.println("\n--- Checkout Summary ---");
+        System.out.println("\n-----------------------------------");
         System.out.println("Order ID: " + currentOrder.getOrderID());
         System.out.println("Date: " + currentOrder.getDateTime());
 
-        // Pizzas
         System.out.println("\nPizzas:");
         for (Pizza pizza : currentOrder.getPizzas()) {
             System.out.println("- " + pizza.getPizzaSize() + " pizza with " + pizza.getCrustType()
@@ -348,35 +322,44 @@ public class UserInterface {
             System.out.printf("  Price: $%.2f\n", pizza.getPrice());
         }
 
-        // Drinks
         System.out.println("\nDrinks:");
         for (Drink drink : currentOrder.getDrinks()) {
             System.out.println("- " + drink.getDrinkSize() + " " + drink.getFlavor()
                     + " ($" + drink.getPrice() + ")");
         }
 
-        // Garlic Knots
         System.out.println("\nGarlic Knots:");
         for (GarlicKnots gk : currentOrder.getGarlicKnots()) {
             System.out.println("- " + gk.getSeasoning() + " ($" + gk.getPrice() + ")");
         }
 
-        // checkout
-        System.out.print("Would you like to confirm your order? (yes/no): ");
+        System.out.print("\nWould you like to confirm your order? (yes/no): ");
         String confirm = scanner.nextLine().trim();
+
         if (confirm.equalsIgnoreCase("yes")) {
-            System.out.println("Order confirmed");
+            System.out.println("Order confirmed.");
+
+            ReceiptFileManager fileManager = new ReceiptFileManager();
+            fileManager.saveReceipt(currentOrder);
+
+            System.out.printf("\nTotal: $%.2f\n", currentOrder.getTotal());
+            System.out.println("Thank you for your order!");
+
         } else {
             System.out.println("Order cancelled.");
-            return;
         }
-        // Total
-        System.out.printf("\nTotal: $%.2f\n", currentOrder.getTotal());
-        System.out.println("Thank you for your order!");
-
     }
 
     public void cancelOrder() {
+        System.out.println("\nDo you want to cancel the order? (yes/no): ");
+        String confirm = scanner.nextLine().trim();
 
+        if (confirm.equalsIgnoreCase("yes")) {
+            currentOrder = null;
+            System.out.println("Your order has been cancelled.");
+        } else {
+            System.out.println("Cancellation aborted. Returning to order menu...");
+        }
     }
+
 }
