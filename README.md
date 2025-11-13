@@ -44,12 +44,20 @@ Include screenshots or GIFs that show your application in action. Use tools like
 
 ![Drink_Size.png](../../../../../Documents/Year%20Up%20United/Capstone%202/Drink_Size.png)
 
+## Class Diagram
+
+[Update_Class_Diagram.pdf](../../Copastone_2/Update_Class_Diagram.pdf)
+
 ## Future Work
 
-Outline potential future enhancements or functionalities you might consider adding:
+Add Pizza, Drinks, GarlicKnots
+- Customer are allowed to customize pizza
 
-- Additional feature to be developed.
-- Improvement of current functionalities.
+Adding topping to Pizza
+
+- Customer allowed to choose different topping 
+- If customer choose extra topping, it will be additional charge
+- Premium topping: Meats and Cheese 
 
 ## Resources
 
