@@ -1,32 +1,36 @@
-package com.pluralsight.com.shop.order;
-import com.pluralsight.com.shop.drinks.Drink;
-import com.pluralsight.com.shop.products.GarlicKnots;
-import com.pluralsight.com.shop.products.Pizza;
+package com.pluralsight.shop.order;
+import com.pluralsight.shop.products.Drink;
+import com.pluralsight.shop.products.GarlicKnots;
+import com.pluralsight.shop.products.Pizza;
 
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.List;
 
 public class Order {
 
     private String orderID;
-    private ArrayList<Pizza> pizzas;
-    private ArrayList<Drink> drinks;
-    private GarlicKnots garlicKnots;
+    private List<Pizza> pizzas;
+    private List<Drink> drinks;
+    private List<GarlicKnots> garlicKnots;
     private LocalDateTime dateTime;
 
-    public Order(String orderID, GarlicKnots garlicKnots, LocalDateTime dateTime) {
-        this.orderID = orderID;
+    public Order(LocalDateTime dateTime) {
+
         this.pizzas = new ArrayList<>();
         this.drinks = new ArrayList<>();
-        this.garlicKnots = null;
+        this.garlicKnots = new ArrayList<>();
         this.dateTime = LocalDateTime.now();
+        this.orderID = dateTime.format(DateTimeFormatter.ofPattern("yyyyMMdd-HHmmss"));
     }
 
-    public ArrayList<Pizza> getPizzas() {
+
+    public List<Pizza> getPizzas() {
         return pizzas;
     }
 
-    public ArrayList<Drink> getDrinks() {
+    public List<Drink> getDrinks() {
         return drinks;
     }
 
@@ -38,11 +42,19 @@ public class Order {
         this.orderID = orderID;
     }
 
-    public GarlicKnots getGarlicKnots() {
+    public void setPizzas(List<Pizza> pizzas) {
+        this.pizzas = pizzas;
+    }
+
+    public void setDrinks(List<Drink> drinks) {
+        this.drinks = drinks;
+    }
+
+    public List<GarlicKnots> getGarlicKnots() {
         return garlicKnots;
     }
 
-    public void setGarlicKnots(GarlicKnots garlicKnots) {
+    public void setGarlicKnots(List<GarlicKnots> garlicKnots) {
         this.garlicKnots = garlicKnots;
     }
 
@@ -64,8 +76,8 @@ public class Order {
         drinks.add(dk);
     }
 
-    public void addGarlicNots(GarlicKnots gK) {
-        this.garlicKnots = garlicKnots;
+    public void addGarlicKnots(GarlicKnots gK) {
+        garlicKnots.add(gK);
     }
     // Cal.. total amount of order
 
@@ -82,10 +94,17 @@ public class Order {
             total += dk.getPrice();
         }
 
-        if (garlicKnots != null){
-            total += garlicKnots.getPrice();
+        for (GarlicKnots gk: garlicKnots) {
+            total += gk.getPrice();
         }
         return total; // just for understanding
+    }
+
+    @Override
+    public String toString() {
+        return "Order #" + orderID + " with" + pizzas.size() +
+                "pizzas" + drinks.size() + "drinks.";
+
     }
 }
 
