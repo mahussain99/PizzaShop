@@ -1,11 +1,8 @@
-# Project Title
-Pizza Shop
+# Project Title: Pizza Shop
 ## Description of the Project
 
 This project is a Java console-based application that simulates a real-world pizza ordering system. Users can create customized pizza orders by selecting pizza size, crust type, and various toppings, including regular and premium options. The system also allows the addition of drinks and garlic knots. It calculates the total cost and generates a receipt, which is saved to a file.
 ## User Stories
-
-List the user stories that guided the development of your application. Format these stories as: "As a [type of user], I want [some goal] so that [some reason]."
 
 - As a user, I want to see menu options, so I can view my orders and choose what I can take
 - As a user, I want to buy a pizza, and I want a customized it and choose a different size, type, and toppings so that I can create my own pizza before making an order
@@ -39,14 +36,12 @@ Follow these steps to get your application running within IntelliJ IDEA:
 - Tools: IntelliJ IDEA.
 
 ## Demo
-
-Include screenshots or GIFs that show your application in action. Use tools like [Giphy Capture](https://giphy.com/apps/giphycapture) to record a GIF of your application.
-
-![Drink_Size.png](../../../../../Documents/Year%20Up%20United/Capstone%202/Drink_Size.png)
+![Order_Screen.png](Order_Screen.png)
+![Choise_Pizza_Size.png](Choise_Pizza_Size.png)
+![Drink_Size.png](Drink_Size.png)
 
 ## Class Diagram
-
-[Update_Class_Diagram.pdf](../../Copastone_2/Update_Class_Diagram.pdf)
+![Class Diagram.SS.jpeg](Class%20Diagram.SS.jpeg)
 
 ## Future Work
 
@@ -62,7 +57,10 @@ Adding topping to Pizza
 ## Resources
 
 List resources such as tutorials, articles, or documentation that helped you during the project.
-- 
+- https://chatgpt.com/g/g-681d378b0c90819197b16e49abe384ec-potato-sensei
+- Capstone 1 information
+- Multiple exercise
+
 
 ## Team Members
 - Mohammad Hussain
@@ -72,6 +70,4 @@ List resources such as tutorials, articles, or documentation that helped you dur
 - A special thanks to all teammates for their dedication and teamwork.
 - Nauman Saqib, Arsenni Kunilovski, Andy Wu
 
-Express gratitude towards those who provided help, guidance, or resources:
-Potato-Sensi
 
