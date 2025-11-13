@@ -42,7 +42,7 @@ Follow these steps to get your application running within IntelliJ IDEA:
 
 Include screenshots or GIFs that show your application in action. Use tools like [Giphy Capture](https://giphy.com/apps/giphycapture) to record a GIF of your application.
 
-![Update_Class_Diagram.svg](../../Copastone_2/Update_Class_Diagram.svg)
+![Drink_Size.png](../../../../../Documents/Year%20Up%20United/Capstone%202/Drink_Size.png)
 
 ## Future Work
 
