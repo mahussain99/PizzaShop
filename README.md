@@ -41,8 +41,7 @@ Follow these steps to get your application running within IntelliJ IDEA:
 ![Drink_Size.png](Drink_Size.png)
 
 ## Class Diagram
-![Class Diagram.SS.jpeg](Class%20Diagram.SS.jpeg)
-
+![Class_Diagram_Updated.jpeg](Class_Diagram_Updated.jpeg)
 ## Future Work
 
 Add Pizza, Drinks, GarlicKnots
